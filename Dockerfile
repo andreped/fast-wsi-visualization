@@ -1,10 +1,7 @@
 FROM nginx:alpine
 
-# Install shadow package to get useradd command
-RUN apk add --no-cache shadow
-
-# Install wget
-RUN apk add --no-cache wget
+# Install necessary packages
+RUN apk add --no-cache shadow wget unzip
 
 # Add a new user
 RUN useradd -m -u 1000 user
@@ -16,20 +13,24 @@ WORKDIR /app
 COPY index.html /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Download test data
+# Download and uncompress test data
 RUN wget https://github.com/andreped/wsi-visualization-demo/releases/download/sample-data/test-sample.zip \
     && unzip test-sample.zip -d /usr/share/nginx/html \
     && rm test-sample.zip
 
-# Download OpenSeadragon
+# Download and uncompress OpenSeadragon
 RUN wget https://github.com/openseadragon/openseadragon/releases/download/v5.0.0/openseadragon-bin-5.0.0.zip \
     && unzip openseadragon-bin-5.0.0.zip -d /usr/share/nginx/html \
     && rm openseadragon-bin-5.0.0.zip
 
-RUN ls -la /usr/share/nginx/html
+# Change ownership of nginx directories to the new user
+RUN chown -R user:user /var/cache/nginx /var/run /var/log/nginx /usr/share/nginx/html
 
 # Expose port 7860
 EXPOSE 7860
 
-# Start nginx as root but serve files as non-root user
-CMD ["sh", "-c", "nginx -g 'daemon off;'"]
+# Switch to the new user
+USER user
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
