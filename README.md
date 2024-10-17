@@ -11,6 +11,12 @@ pinned: false
 
 # wsi-visualization-demo
 
+## Why?
+
+This repository was developed to demonstrate how to do the following:
+* Creating a simple web application for rendering a whole slide image in real time.
+* Containerizing and deploying a web app for deployment on Hugging Face Spaces.
+
 ## Docker
 
 1. Build image:
