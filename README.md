@@ -11,11 +11,18 @@ pinned: false
 
 # wsi-visualization-demo
 
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/andreped/wsi-visualization-demo/blob/main/LICENSE.md)
+<a target="_blank" href="https://huggingface.co/spaces/andreped/wsi-visualization-demo"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-yellow.svg"></a>
+
 ## Why?
 
 This repository was developed to demonstrate how to do the following:
 * Creating a simple web application for rendering a whole slide image in real time.
 * Containerizing and deploying a web app for deployment on Hugging Face Spaces.
+
+To access the live demo, click on the `Hugging Face` badge above. Below is a snapshot of the current state of the demo app.
+
+<img width="1400" alt="Screenshot" src="assets/demo-hf-spaces.png">
 
 ## Docker
 
