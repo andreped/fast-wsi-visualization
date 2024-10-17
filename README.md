@@ -24,6 +24,14 @@ To access the live demo, click on the `Hugging Face` badge above. Below is a sna
 
 <img width="1400" alt="Screenshot" src="assets/demo-hf-spaces.png">
 
+## Continuous integration
+
+For this project, we continuously update the Hugging Face deployment for each commit to the main branch.
+
+| Build Type | Status |
+| - | - |
+| **HF Space Deploy** | [![CI](https://github.com/andreped/wsi-visualization-demo/workflows/Deploy/badge.svg)](https://github.com/andreped/wsi-visualization-demo/actions) |
+
 ## Docker
 
 1. Build image:
