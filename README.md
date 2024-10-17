@@ -1,3 +1,14 @@
+---
+title: wsi-visualization-demo
+emoji: 🔬
+colorFrom: blue
+colorTo: red
+sdk: docker
+sdk_version: "24.0.6"
+app_file: Dockerfile
+pinned: false
+---
+
 # wsi-visualization-demo
 
 ## Docker
