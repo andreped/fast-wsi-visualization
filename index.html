@@ -1,26 +1,20 @@
 <html></html>
     <head>
-                <title>Whole Slide Image Visualization</title>
+        <title>Whole Slide Image Visualization</title>
         </head>
         <body>
-                <h1>Simple demo for visualization of WSIs in the browser! </h1>
+            <h1>Simple demo for visualization of WSIs in the browser! </h1>
 
         <div style="padding: 0 1.5em; height: 90%;">
-                <div class="info" style="float: left; width: 10%;">
-                        <div class="position"></div>
-                        <div class="zoom" style="margin-top: 3em;"></div>
-                </div>
-                <div id="openseadragon1" style="float: right; width: 90%; height: 100%; background: black;"></div>
+            <div class="info" style="float: left; width: 10%;">
+                <div class="position"></div>
+                <div class="zoom" style="margin-top: 3em;"></div>
+            </div>
+            <div id="openseadragon1" style="float: right; width: 90%; height: 100%; background: black;"></div>
         </div>
-
-                <!-- <div id="openseadragon1" style="width: 100%; height: 100%";></div> -->
-                <!-- html comment syntax -->
         <script src="/Users/andreped/Downloads/openseadragon-bin-5.0.0/openseadragon.min.js"></script>
-        <!-- <script src="/OpenSeadragonCanvasOverlay/openseadragon-canvas-overlay.js"></script> -->
-
         <script type="text/javascript">
             var counter = 3;
-
                 var viewer = OpenSeadragon({
                         id: "openseadragon1",
                         prefixUrl: "/Users/andreped/Downloads/openseadragon-bin-5.0.0/images/",
@@ -54,7 +48,63 @@
                             clickToZoom: false
                     },
                 });
+            
+            var positionEl = document.querySelectorAll('.info .position')[0];
+            var zoomEl = document.querySelectorAll('.info .zoom')[0];
 
+            var updateZoom = function() {
+                        var zoom = viewer.viewport.getZoom(true);
+                        var imageZoom = viewer.viewport.viewportToImageZoom(zoom);
+
+                        zoomEl.innerHTML = 'Zoom:<br>' + (Math.round(zoom * 100) / 100) + 
+                                '<br><br>Image Zoom:<br>' + (Math.round(imageZoom * 100) / 100);
+                }
+
+                viewer.addHandler('open', function() {
+                        var tracker = new OpenSeadragon.MouseTracker({
+                                element: viewer.container,
+                                moveHandler: function(event) {
+                                        var webPoint = event.position;
+                                        var viewportPoint = viewer.viewport.pointFromPixel(webPoint);
+                                        var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint);
+                                        var zoom = viewer.viewport.getZoom(true);
+                                        var imageZoom = viewer.viewport.viewportToImageZoom(zoom);
+
+                                        positionEl.innerHTML = 'Web:<br>' + webPoint.toString() + 
+                                                '<br><br>Viewport:<br>' + viewportPoint.toString() +
+                                                '<br><br>Image:<br>' + imagePoint.toString();
+                                        
+                                        updateZoom();     
+                                }
+                        });
+                        tracker.setTracking(true);  
+                        viewer.addHandler('animation', updateZoom);   
+                });
+
+                viewer.addHandler('canvas-double-click', function(event) {
+                    var webPoint = event.position;
+                    var viewportPoint = viewer.viewport.pointFromPixel(webPoint);
+                    var imagePoint = viewer.viewport.viewportToImageCoordinates(viewportPoint);
+                    var zoom = viewer.viewport.getZoom(true);
+                    var val = 42625/51553;
+
+                var elt = document.createElement("div");
+                        elt.id = "overlay-rotation-exact2";
+                        elt.className = "highlight";
+
+                        var width = 0.02;
+                        var height = 0.02;
+                        
+                        width /= zoom;
+                        height /= zoom;
+
+                var someRect = new OpenSeadragon.Rect(viewportPoint.x - width/2, viewportPoint.y - height/2, width, height);
+
+                viewer.addOverlay({
+                    element: elt,
+                    location: someRect
+                });
+            });
         </script>
         </body>
 </html>
