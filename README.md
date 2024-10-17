@@ -33,3 +33,7 @@ docker run -p 7860:7860 wsi-visualization
 ```
 open http://localhost:7860
 ```
+
+## License
+
+This project has MIT License.
