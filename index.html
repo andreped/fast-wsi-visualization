@@ -1,0 +1,60 @@
+<html></html>
+    <head>
+                <title>Whole Slide Image Visualization</title>
+        </head>
+        <body>
+                <h1>Simple demo for visualization of WSIs in the browser! </h1>
+
+        <div style="padding: 0 1.5em; height: 90%;">
+                <div class="info" style="float: left; width: 10%;">
+                        <div class="position"></div>
+                        <div class="zoom" style="margin-top: 3em;"></div>
+                </div>
+                <div id="openseadragon1" style="float: right; width: 90%; height: 100%; background: black;"></div>
+        </div>
+
+                <!-- <div id="openseadragon1" style="width: 100%; height: 100%";></div> -->
+                <!-- html comment syntax -->
+        <script src="/Users/andreped/Downloads/openseadragon-bin-5.0.0/openseadragon.min.js"></script>
+        <!-- <script src="/OpenSeadragonCanvasOverlay/openseadragon-canvas-overlay.js"></script> -->
+
+        <script type="text/javascript">
+            var counter = 3;
+
+                var viewer = OpenSeadragon({
+                        id: "openseadragon1",
+                        prefixUrl: "/Users/andreped/Downloads/openseadragon-bin-5.0.0/images/",
+                        tileSources: {
+                            Image: {
+                                xmlns: "http://schemas.microsoft.com/deepzoom/2008",
+                                Url: "/Users/andreped/workspace/PyWSIViewer/A05_files/",
+                                Format: "jpeg",
+                                Overlap: "0",
+                                TileSize: "256",
+                                Size: {
+                                    Height: 42625, 
+                                    Width: 51553
+                                }
+                            },
+                        },
+                        sequenceMode: false,
+                        autoHideControls: true,
+                        animationTime: 1.0,
+                        blendTime: 0.5,
+                        constrainDuringPan: false,
+                        maxZoomPixelRatio: 1.15,
+                        visibilityRatio: 1,
+                        zoomPerScroll: 2,
+                        //zoomPerClick: 1,
+                        defaultZoomLevel: 0,
+                        showReferenceStrip: false,
+                        showNavigator:  true,
+                showFullPageControl: false,
+                gestureSettingsMouse:   {
+                            clickToZoom: false
+                    },
+                });
+
+        </script>
+        </body>
+</html>
