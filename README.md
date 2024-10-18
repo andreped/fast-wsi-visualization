@@ -31,6 +31,7 @@ For this project, we continuously update the Hugging Face deployment for each co
 | Build Type | Status |
 | - | - |
 | **HF Space Deploy** | [![CI](https://github.com/andreped/wsi-visualization-demo/workflows/Deploy/badge.svg)](https://github.com/andreped/wsi-visualization-demo/actions) |
+| **File Size Check** | [![CI](https://github.com/andreped/wsi-visualization-demo/workflows/Check%20file%20size/badge.svg)](https://github.com/andreped/wsi-visualization-demo/actions) |
 
 ## Docker
 
