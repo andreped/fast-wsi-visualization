@@ -24,6 +24,17 @@ To access the live demo, click on the `Hugging Face` badge above. Below is a sna
 
 <img width="1400" alt="demo-hf-spaces" src="https://github.com/user-attachments/assets/6cf9b9d5-4ea2-4cab-ac13-3a623edc1094">
 
+## Stack
+
+For this demonstration, we have used the following:
+
+| Component | Description |
+| - | - |
+| **OpenSeadragon** | The actual library for rendering the WSI |
+| **Deep Zoom Image (DZI)** | Image file format compatible with OpenSeadragon |
+| **nginx** | HTTP web server |
+| **Docker** | Containerization of the web app |
+| **Hugging Face Spaces** | Deployment platform |
 
 ## Continuous integration
 
