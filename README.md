@@ -22,7 +22,8 @@ This repository was developed to demonstrate how to do the following:
 
 To access the live demo, click on the `Hugging Face` badge above. Below is a snapshot of the current state of the demo app.
 
-<img width="1400" alt="Screenshot" src="assets/demo-hf-spaces.png">
+<img width="1400" alt="demo-hf-spaces" src="https://github.com/user-attachments/assets/6cf9b9d5-4ea2-4cab-ac13-3a623edc1094">
+
 
 ## Continuous integration
 
